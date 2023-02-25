@@ -1,0 +1,28 @@
+FreeBSD 8.0/7.3/7.2 1386, ProFTPD 1.3.2a/e/c Server (binary)
+Debian GNU/Linux 5.0, ProFTPD 1.3.2e Server (Plesk binary)
+220 (vsftpd 2.3.4)
+Mandrake Linux 7.1 (apache-1.3.14-2)
+Samba smbd 3.X (workgroup:MYGROUP)
+Cyrus pop3d 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+MiniServ 0.01 (weadmin httpd)
+OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+Linux telnetd
+Postfix smtpd
+ISC BIND 9.4.2
+Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+exec?
+OpenBSD or Solaris rlogind
+tcpwrapped
+GNU Classpath grmiregistry
+Metasploitable root shell
+2-4 (RPC #100003)
+ProFTPD 1.3.1
+MySQL 5.0.51a-3ubuntu5
+PostgreSQL DB 8.3.0 - 8.3.7
+VNC (protocol 3.3)
+(access denied)
+UnrealIRCd
+Apache Jserv (Protocol v1.3)
+Apache Tomcat/Coyote JSP engine 1.1

@@ -1,0 +1,46 @@
+---------> nmap --script=banner 192.168.1.150
+
+Hago esto para sacar toda la informacion de la maquina de metaspoit
+
+Ahora con el sript de JAVA script voy a leer los ficheros con los puertos interesantes
+Cada puerto me tira banners 
+Me cannecto a cada puerto de la lista de puerto y comprubo si el banner que estamos recibiendo esta en la lista 
+Si coincide seria interesante para un ejercicio de nuemracion.
+
+
+------------
+
+Correr el script de banner?grap es lo mismo que utilizar el siguiente comando de nmap
+
+nmap  -sV -Pn 192.168.1.150
+
+----------------- METASPLOIT
+
+MArco de trabajo de codigo abierto basado en RUBY
+
+Se utiliza para validar las vulnerabilidades del sitema
+
+PAYLOAD es lo que le pasamos al explotar la vulnerabilidades
+
+
+Ahora lo que hago es scannerar los puertos con NMAP para saber las diferentes vulnerabilidades que puedo explotar
+
+nmap -sV -Pn 192.168.1.150
+
+para utlizarlo neesito levantar metasploit y activar el plugin
+
+load msgrpc Pass-password
+
+-----------------------------
+
+Esta es la forma de sacar infomracion de kali
+Utilizo el puerto HTTP si tengo un brige
+
+python -m http.server --bind 192.168.1.30
+
+----------------------------------
+
+CUnado queremos sacar y explotar otras vulnerabilidades y necesitamos la ruta para ejecutarlo hacemos en Metaxploit nu abusqueda.
+
+
+
