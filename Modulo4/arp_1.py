@@ -23,7 +23,8 @@ myip = get_if_addr("eth1")
 arp_request= Ether(dst=ETHER_BROADCAST)/ARP(hwsrc=mymac, hwdst= ETHER_BROADCAST, pdst="172.23.151.23")
 
 arp_reply = srp(arp_request, timeout=1)
-# Ahora lo intento indexar# SI la tupla existe y tiene el campo 0 la maquina esta viva
+# Ahora lo intento indexar
+# # SI la tupla existe y tiene el campo 0 la maquina esta viva
 if arp_reply and arp_reply[0]:
     print("maquina viva")
 else:

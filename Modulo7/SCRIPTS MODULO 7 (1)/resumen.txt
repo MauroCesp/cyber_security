@@ -1,0 +1,22 @@
+EN Windows se utiliza NTLM para decifrar Hashes
+
+UN hash es un funcion que convierte un valor en otro
+
+CRIPTOGRAFI
+Enmascar los datos originales con otro valorEL valor se e cneurtar buscando el valor en una tabla hash o base de datos
+
+A prueba de criptografia inversa
+
+Coalisionces
+
+Unidireccional y no se puede revertir
+
+
+SUMAS DE COMPROBACION------ UN pequeño valor que se genera a artir de un bloque de datos como un disco. CUnado se ejecuta la sum ade comprobacion deberia de producir el mismo hash que el archivo original.
+
+COMO SE HASHEA
+
+MD5 -- Message Digest Algorithm
+Verificar que un archivo no ha sido alterado
+Utiliza la suma de comprobacion 
+Con MD5 no hashearia un contraseña pero para verificar si un archivo es el mismo da igual usar este.

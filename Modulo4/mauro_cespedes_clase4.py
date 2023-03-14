@@ -169,6 +169,8 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 
 	enableForwarding()
+ 
+ 
 	redirectionRules(args.route, args.interface)	
 	
 	gateway_ip = args.gateway
